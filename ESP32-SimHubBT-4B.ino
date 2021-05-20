@@ -30,6 +30,7 @@
 #define POS_LAMP_PIN            19
 #define OIL_TEMP_PIN            4
 #define DIMM_PIN                33
+#define PWR_PIN                 17
 
 #define BUF_SIZE                128
 
@@ -99,6 +100,7 @@ void setup() {
     pinMode(BRAKE_PIN, OUTPUT);
     pinMode(POS_LAMP_PIN, OUTPUT);
     pinMode(DIMM_PIN, OUTPUT);
+    pinMode(PWR_PIN, OUTPUT);
 
     digitalWrite(TURN_R_PIN, LOW);
     digitalWrite(OIL_PIN, LOW);
@@ -108,6 +110,7 @@ void setup() {
     digitalWrite(WATER_MIN_PIN, HIGH);
     digitalWrite(BRAKE_PIN, LOW);
     digitalWrite(POS_LAMP_PIN, LOW);
+    digitalWrite(DIMM_PIN, HIGH);
 
     ledc_init(TEMP_PIN, 490, LEDC_CHANNEL_0, LEDC_TIMER_0);
     ledc_init(RPM_PIN, FREQ_MIN_Hz, LEDC_CHANNEL_1, LEDC_TIMER_1);
@@ -132,7 +135,7 @@ void setup() {
     
     delay(1000);
 
-    digitalWrite(DIMM_PIN, HIGH);
+    digitalWrite(PWR_PIN, HIGH);
 
     memset(simHubMessageBuf, 0x0, BUF_SIZE);
     btSerial.begin(BT_NAME);
