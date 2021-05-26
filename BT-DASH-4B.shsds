@@ -2,21 +2,21 @@
   "AutomaticReconnect": true,
   "SerialPortName": "COM8",
   "IsConnecting": false,
-  "IsEnabled": true,
+  "IsEnabled": false,
   "LogIncomingData": false,
-  "IsConnected": true,
+  "IsConnected": false,
   "BaudRate": 115200,
   "UpdateMessages": [
     {
       "Message": {
-        "Expression": "'{'+isnull([Rpms], '0')+'&'+isnull([SpeedKmh], '0')+'&'+isnull([DataCorePlugin.Computed.Fuel_Percent], '0')+'&'+isnull([WaterTemperature], '0')+'&'+isnull([TurnIndicatorLeft], '0')+'&'+isnull([TurnIndicatorRight], '0')+'&'+isnull([Handbrake], '0')+'&'+isnull([OilTemperature], '0')+'}'"
+        "Expression": "'{'+round(isnull([Rpms], '0'), 0)+'&'+round(isnull([SpeedKmh], '0'), 0)+'&'+round(isnull([DataCorePlugin.Computed.Fuel_Percent], '0'), 0)+'&'+round(isnull([WaterTemperature], '0'), 2)+'&'+isnull([TurnIndicatorLeft], '0')+'&'+isnull([TurnIndicatorRight], '0')+'&'+isnull([Handbrake], '0')+'&'+round(isnull([OilTemperature], '0'), 2)+'}'"
       },
       "IsEnabled": true,
       "MaximumFrequency": 0
     }
   ],
   "OnConnectMessage": {
-    "Expression": ""
+    "Expression": "'{0&0&100&0&0&0&0&0}'"
   },
   "OnDisconnectMessage": {
     "Expression": ""
@@ -26,7 +26,7 @@
   "EditorExpanded": true,
   "Name": "Custom Serial device",
   "Description": "BT-DASH-4B",
-  "LastErrorDate": "0001-01-01T00:00:00",
+  "LastErrorDate": "2021-05-25T23:51:50.5672249+02:00",
   "LastErrorMessage": null,
   "IsFreezed": false,
   "SettingsBuilder": {
